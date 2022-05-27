@@ -1,0 +1,36 @@
+:root > * {
+    /* UI Colors */
+    --md-primary-fg-color: #1D3557;
+    --md-accent-fg-color:  #457B9D;
+    --md-default-bg-color: #F1FAEE;
+
+    /* Code Highlighting */
+    --md-code-bg-color:             #DCE6DA;
+    --md-code-hl-color:             #E63946;
+    --md-code-hl-number-color:      #1D3557;
+    --md-code-hl-special-color:     #285619;
+    --md-code-hl-function-color:    #1D3557;
+    --md-code-hl-constant-color:    #4276C0;
+    --md-code-hl-keyword-color:     #E63946;
+    --md-code-hl-string-color:      #50AC32;
+    --md-code-hl-name-color:        #1D3557;
+    --md-code-hl-operator-color:    #E63946;
+    --md-code-hl-punctuation-color: #3B3B3B;
+    --md-code-hl-comment-color:     #50AC32;
+    --md-code-hl-generic-color:     #3B3B3B;
+    --md-code-hl-variable-color:    #3B3B3B;
+}
+
+[data-md-color-scheme="slate"] {
+    --md-hue: 215; 
+}
+
+div.doc-contents:not(.first) {
+    padding-left: 25px;
+    border-left: 4px solid #DCE6DA;
+    margin-bottom: 80px;
+}
+
+.md-typeset :is(.quote,.cite)>:is(.admonition-title,summary) {
+    background-color: #DCE6DA;
+}

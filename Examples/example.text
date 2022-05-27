@@ -1,0 +1,26 @@
+# Example parameters #
+I wanted to show animations instead of pictures,
+the files are compressed to reduce their footprint
+but originals can be sent if needed.
+
+~~~ Shared parameters ~~~
+el_size_factor: 0.5
+ep: 1.0
+w: 40.0
+h: 20.0
+p: 10.0
+kx: 20.0
+ky: 20.0
+version: 5
+
+~~ Study of d ~~
+d: 1.0
+dEnd: 19.0
+t: 1.0
+steps: 100
+
+~~ Study of t ~~
+d: 20.0
+t: 1.0
+tEnd: 39.0
+steps: 200

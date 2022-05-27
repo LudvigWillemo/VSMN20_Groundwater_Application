@@ -1,0 +1,75 @@
+nav:
+  - Home: index.md
+  - Groundwater Flow: GroundwaterFlow.md
+  - Developement: Developement.md
+  - Application Manual: AppManual.md
+  - Flowmodel Module Manual: ModuleManual.md
+  - Code Reference:
+      - "Flowmodel": flowmodel.md
+      - "GWapp": GWapp.md
+      - "Segementtimer": segmenttimer.md
+
+site_name: Groundwater Flow Application
+site_description: Project documentation with Markdown.
+site_author: Ludvig Willemo
+copyright: Copyright &copy; 2022 Ludvig Willemo
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+  - mkdocstrings
+
+markdown_extensions:
+  - meta
+  - tables
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.arithmatex:
+      generic: true
+
+theme:
+  name: material
+  font: 
+    text: Roboto
+    code: Roboto Mono
+  logo: img/icon.png
+  favicon: img/icon.png
+  icon:
+    admonition:
+      note: octicons/tag-16
+      abstract: octicons/checklist-16
+      info: octicons/info-16
+      tip: octicons/squirrel-16
+      success: octicons/check-16
+      question: octicons/question-16
+      warning: octicons/alert-16
+      failure: octicons/x-circle-16
+      danger: octicons/zap-16
+      bug: octicons/bug-16
+      example: octicons/beaker-16
+      quote: octicons/quote-16
+      
+  features:
+    - content.code.annotate
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top

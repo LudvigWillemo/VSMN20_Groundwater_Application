@@ -50,25 +50,27 @@ The `execute` method uses a typical finite element method scheme which is define
 </figure>
 
 ### Report
-
-wait to see if time for param report ...
+With the `Report` class the purpose is to present input and output data in a clear way from the attributes of `InputData` and `OutputData`. While the input data consists of mainly scalars, the output data contains large float type vectors and matrices which requires significant formatting. The results are displayed in tables for each node and for each element. As these tables can become massive, the scalar values are displayed first to be more easily available. The scalar output values are number of nodes, number of elements and the maximal effective flux.
 
 ### Visualization
+To visualize output data, the class `Visualization` is used. This class creates figures and stores them as attributes. Originally all plots were plotted within separate windows, which is still the case for `showAll` which presents all figures. However, I wished to show figures within the application, a more difficult task than first thought. 
 
-wait to see if fixed ...
+Since figures could not be simply returned, due to how matplotlib and CALFEM Visualisation handles figures. With research a promising backend PyQt class `FigureCanvasQTAgg` of matplotlib was found. Its objects are PyQt5 compatible and can render figures from matplotlib and by extension CALFEM Visualisation. Another highly useful method is `figure_widget` from CALFEM Visualisation, which takes a figure argument and returns a `FigureCanvasQTAgg` object.
+
+The `FigureCanvasQTAgg` objects are also saved as attributes, hence also closed in `closeAll`. To keep the individual plotting functions independent of this new extension, the keyword argument `show` was added. When it has its default value of true, the figures are shown in their own windows, when it is assigned false it suppresses the figures from showing and returns a `FigureCanvasQTAgg` object.
 
 ## GWapp Application
 The application is meant to connect the user with the flowmodel module, with an easy to use graphical interface. In this case we used the Qt framework to implement a graphical interface that could be used on any platform. 
 
 ### MainWindow
-The MainWindow is contains the bulk of the application with the UI, functions and all connections between them. Most functions are have little to no content and only calls on methods from the flowmodel module. The UI is designed from the ground up and should contain everything a user might need, the user should not have to use the console apart from debugging.
+The `MainWindow` class contains the bulk of the application with the UI, functions and all connections between them. Most functions are have little to no content and only calls on methods from the flowmodel module. The UI is designed from the ground up and should contain everything a user might need, the user should not have to use the console apart from debugging.
 
 #### Design
 To ease the design process, the Qt Designer program is used which has real time previews and drag and drop features. However, not all features are available within the program and some tinkering had to be done with code using PyQt5.
 
 The first iterations of the interface were disorganized and used layouts in a way that would bad for scaling. Through iterative development a system of nested layouts was used to achieve predictable behavior during scaling. Through experimentation with stylesheets, I put my novice CSS knowledge to use in changing colors, margins and borders.
 
-With several different iterations of the interface and a better familiarity with Qt Designer, a new interface was designed. This time a more coherent color palette was used, seen below, alongside color-matched free to use icons from [flaticon](https://www.flaticon.com/uicons).
+With several different iterations of the interface and a better familiarity with Qt Designer, a new interface was designed. This time a more coherent [color palette](https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557) was used, seen below, alongside color-matched free to use icons from [flaticon](https://www.flaticon.com/uicons).
 
 <figure markdown>
   ![palette](img/palett.png){ width="750" }
@@ -96,7 +98,7 @@ Still no borders were available to grip in order to resize the window. To remedy
 
 While at it, the program icon was changed from the default Python executable to a custom made logo to represent the geometry. In order for the logo to be shown in windows, the application had to be assigned an unique application ID.
 
-???+ warning "Waring for other platforms"
+???+ warning "Waring for Mac and Linux"
     This program has been developed on machines using Windows, hence I have no idea if the program will run as intended on Linux or Mac. Since assigning an unique application ID is specific to Windows, the following line can be removed from `MainWindow.__init__` if the application is run in other platforms.
     ``` { .py .annotate }
     ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("GWapp")
@@ -111,11 +113,12 @@ Utility methods correlates to the methods used when performing a simulation or p
 
 Input and output contains several updating and file-functionality methods. To begin with, the `updateControls` method puts `InputData` attributes into the controls while `updateModel` reads data from the controls and puts them into `InputData` attributes. For the latter, simple exception handling was used to catch when incorrect types are read. With `updateEnd` only the currently displayed end value is read and put into the corresponding `InputData` attribute. Lastly `updateName` extracts the model name from the path attribute and updates the name within the UI.
 
-Plotting methods
-wait for fix ...
+#### Report and Figures
+A QTabWidget is used to utilize the same space for the report and figures. The report is changed with calls of `setPlainText()` on the UI QPlainTextEdit attribute and its tab is always opened after new calculations. For figures, an empty `FigureCanvasQTAgg` attribute was initiated and manual placed into the opposite tab.
 
-#### Canvas
-wait to see if fixed ...
+In order to change the figure the method `updateCanvas` was implemented. This method uses the returned `FigureCanvasQTAgg` from the visualization methods to replace the previous canvas with `replaceWidget`. The method is accompanied by `clearCanvas`, which is connected to the clear canvas button.
+
+An addition to all plotting methods is the usage of `message` which prompts the user that relevant result has not been calculated for plotting attempts.
 
 ### Progress
 When the program was finished there was still some things that were printed to the console, which provided the user with valuable information. One of these were all status printouts of the `Solver` class. To make these available to the application an object had to be passed to the solver instance. At first this was done with the QPlainTextEdit meant for the report. While it was sufficient, it was clunky and not visually pleasing.

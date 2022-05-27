@@ -4,15 +4,6 @@
 
 This module contains a collection of five classes with combined functionality
 to construct a program for finite element analysis of groundwater flow.
-
-Classes:
-    InputData: Stores indata with save and load functionality.
-    OutputData: Stores outdata.
-    Solver: Manages in-/outdata, contains a FEM solver routine.
-    Report: Formats report of all in-/outdata.
-    Visualization: Visualizes in-/outdata with plots.
-
-Author: Ludvig Willemo
 """
 
 import json
@@ -46,13 +37,6 @@ class InputData(object):
         dEnd (float): End depth in study of d
         tEnd (float): End thickness in study of t
         steps (int): Amount of steps of parameter study
-
-    Methods:
-        save: Saves indata to file
-        load: Reads indata from file
-        geometry: Defines problem geometry
-        validModel: Returns True if model parameters are valid
-        validParam: Returns True if parameter study parameters are valid
     """
 
     def __init__(self):
@@ -271,11 +255,6 @@ class Solver(object):
         output_data (OutputData): Object containing output data
         basepath (str): Optional path for export to VTK
         pg (Progress): Optional progress-object to inform user of calculations
-
-    Methods:
-        execute: Executes FEM solver routine for groundwater flow
-        executeParamStudy: Executes parameter study
-        exportVtk: Export results to VTK
     """
 
     def __init__(self, input_data, output_data, pg=False, basepath=""):
@@ -470,10 +449,6 @@ class Report(object):
         input_data (InputData): Object containing input data
         output_data (OutputData): Object containing output data
         report (str): String to print out as report
-
-    Methods:
-        clear: Clears report
-        add_text: Adds a new line of text to report
     """
 
     def __init__(self, input_data, output_data):
@@ -585,6 +560,7 @@ class Visualization(object):
     Attributes:
         input_data (InputData): Object containing input data
         output_data (OutputData): Object containing output data
+        
         geomFig (Figure): Figure of geometry
         meshFig (Figure): Figure of mesh
         piezoFig (Figure): Figure of piezometric head
@@ -598,18 +574,6 @@ class Visualization(object):
         reac_widget (FigureCanvasQTAgg): FigureCanvas of reaction flux
         eff_widget (FigureCanvasQTAgg): FigureCanvas of effective flux
         param_widget (FigureCanvasQTAgg): FigureCanvas of maximal effective flux
-
-    Methods:
-        show: Plots multiple outdata
-        showGeomerty: Plots geometry
-        showMesh: Plots mesh
-        showPiezo: Plots piezometric head
-        showReac: Plots reaction flux
-        showEff: Plots effective flux
-        showParam: Plots maximal effective flux for parameter study
-
-        closeAll: Closes all plots and remove attributes
-        wait: Waits for plots to be closed
     """
 
     def __init__(self, input_data, output_data):
@@ -677,8 +641,8 @@ class Visualization(object):
         Args:
             show (bool, optional): Flag if figures are drawn. Defaults to True.
 
-        Returns (if show=False):
-            FigureCanvasQTAgg: Canvas of geometry
+        Returns:
+            FigureCanvasQTAgg: Canvas of geometry (if show=False)
         """
 
         if self.geomFig is None:
@@ -698,8 +662,8 @@ class Visualization(object):
         Args:
             show (bool, optional): Flag if figures are drawn. Defaults to True.
 
-        Returns (if show=False):
-            FigureCanvasQTAgg: Canvas of mesh
+        Returns:
+            FigureCanvasQTAgg: Canvas of mesh (if show=False)
         """
 
         if self.meshFig is None:
@@ -721,8 +685,8 @@ class Visualization(object):
         Args:
             show (bool, optional): Flag if figures are drawn. Defaults to True.
 
-        Returns (if show=False):
-            FigureCanvasQTAgg: Canvas of piezometric head
+        Returns:
+            FigureCanvasQTAgg: Canvas of piezometric head (if show=False)
         """
 
         if self.piezoFig is None:
@@ -745,8 +709,8 @@ class Visualization(object):
         Args:
             show (bool, optional): Flag if figures are drawn. Defaults to True.
 
-        Returns (if show=False):
-            FigureCanvasQTAgg: Canvas of reaction flux
+        Returns:
+            FigureCanvasQTAgg: Canvas of reaction flux (if show=False)
         """
 
         if self.reacFig is None:
@@ -769,8 +733,8 @@ class Visualization(object):
         Args:
             show (bool, optional): Flag if figures are drawn. Defaults to True.
 
-        Returns (if show=False):
-            FigureCanvasQTAgg: Canvas of effective flux
+        Returns:
+            FigureCanvasQTAgg: Canvas of effective flux (if show=False)
         """
 
         if self.effFig is None:
@@ -794,8 +758,8 @@ class Visualization(object):
         Args:
             show (bool, optional): Flag if figures are drawn. Defaults to True.
 
-        Returns (if show=False):
-            FigureCanvasQTAgg: Canvas of maximal effective flux for param-study
+        Returns:
+            FigureCanvasQTAgg: Canvas of maximal effective flux for param-study (if show=False)
         """
 
         if self.paramFig is None:

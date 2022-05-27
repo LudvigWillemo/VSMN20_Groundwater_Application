@@ -10,5 +10,15 @@ This documentation website composes the final hand-in for the course Software De
 ### Acknowledgements
 The website is built using [MkDocs](https://www.mkdocs.org/) with a theme and additional functionality from [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/). For the source code documentation, the plugin [mkdocstrings](https://mkdocstrings.github.io/) was used. The application UI was inspired by multiple QtDesigner tutorials made by [Wanderson](https://www.youtube.com/c/WandersonIsMe) on YouTube.
 
-???+ bug "Possible bug"
-    During the final revision of the program, a bug appeared on some machines that prevents figures to be properly shown in the figure tab. While I think it is fixed, I cannot be sure since it only did not affect all machines. Consult the manual to see how it is supposed to look. I was not able to find a fix yet, but I am working on it and will update this box if it is fixed.
+??? info "Python packages"
+    This program was written in a default Anaconda3 environment, with the addition a few of packages. I recommend that the conda environment is updated, since I myself experienced some problems. Further that that pip is used to verify the installment of the neccecary packages that are not included in Anaconda3:
+    ``` { .annotate }
+    conda update --all 
+    pip install gmsh calfem-python 
+    ```
+    <br>If one want to experiment with MkDocs do so by installing the packages and host the website locally with:
+    ``` { .annotate }
+    pip install mkdocs mkdocs-material mkdocstrings
+    ...\MkDocs> mkdocs serve
+    ```
+    

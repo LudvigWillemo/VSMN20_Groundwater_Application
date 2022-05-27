@@ -585,6 +585,7 @@ class Visualization(object):
     Attributes:
         input_data (InputData): Object containing input data
         output_data (OutputData): Object containing output data
+        
         geomFig (Figure): Figure of geometry
         meshFig (Figure): Figure of mesh
         piezoFig (Figure): Figure of piezometric head

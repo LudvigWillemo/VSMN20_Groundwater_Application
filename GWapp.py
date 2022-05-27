@@ -440,7 +440,8 @@ class MainWindow(QMainWindow):
         else:
             txt = str(fm.Report(self.input_data, self.output_data))
             self.reportPlainEdit.setPlainText(txt)
-
+            
+        self.tabWidget.setCurrentIndex(0)
         self.setEnabled(True)
         self.pg.exit()
 

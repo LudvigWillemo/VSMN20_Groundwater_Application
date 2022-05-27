@@ -7,20 +7,13 @@ groundwater flow. Through the use of flowmodel.py results can be ploted for
 individual executions. Parameter studies are possible, with results exported
 to VTK-files which can be visualized within Paraview. The app utilizes pyqt5
 with the design mainly being made whithin Qt Designer.
-
-Classes:
-    SolverThread: Class to use a separate thread for execute
-    Progress: Class to display window of calculation progress
-    MainWindow: Class to create app
-
-Author: Ludvig Willemo
 """
 
 import sys
 import ctypes
 import os.path
 from os import mkdir
-import flowmodel as fm
+#import flowmodel as fm
 import calfem.vis_mpl as cfv
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as Canvas
 
@@ -66,7 +59,7 @@ class Progress(QMainWindow):
         ui (QWidget): Object containing all UI elements
 
     Methods:
-        set: Sets calculation procentage and segment name
+        set: Sets calculation percentage and segment name
         exit: Resets UI elements and close window
     """
 
@@ -79,14 +72,14 @@ class Progress(QMainWindow):
         self.setAttribute(Qt.WA_TranslucentBackground)
 
     def set(self, proc, seg):
-        """Sets calculation procentage and segment name
+        """Sets calculation percentage and segment name
 
         Args:
-            proc (int): Calculation procentage
+            proc (int): Calculation percentage
             seg (str): Segmentation name
         """
 
-        # The reference ".ui" is not necessary, hence it is skiped throughout
+        # The reference ".ui" is not necessary, hence it is skipped throughout
         self.progressLabel.setText(f"{proc}%")
         string = f"{seg}\n{self.loadLabel.text()}"
         self.loadLabel.setText(string)
@@ -116,37 +109,6 @@ class MainWindow(QMainWindow):
 
         offset (-): Temporary variable for movement of window
         windowed (bool): Flag if app is windowed or not
-
-    Methods:
-        updateControls: Updates interface from model variables
-        updateModel: Updates model variables from interface
-        updateEnd: Updates end at radio button interaction
-        updateName: Extracts and updates model name in UI
-
-        onActionNew: Creates new model
-        onActionOpen: Opens saved model
-        onActionSave: Saves current model
-        onActionSaveAs: Saves current model as new file
-
-        onActionExecute: Executes calculations on current model
-        onExecuteParamStudy: Executes parameter study
-        onSolverFinished: Routines when solver is finished
-
-        showGeo: Plots geometry
-        showMesh: Plots mesh
-        showPizeo: Plots pizeometric head
-        showEff: Plots effective flux
-        showParam: Plots maximum effective flux for parameter study
-        updateCanvas: Updates canvas figure
-        clearCanvas: Clears canvas of figures
-        message: Tells user that no results exist
-
-        exit: Asks before terminating program
-        maximize: Maximizes or restores window
-
-        mousePressEvent: Initiates window movement
-        mouseMoveEvent: Moves window
-        mouseReleaseEvent: Suspend window movement
     """
 
     def __init__(self):
@@ -440,7 +402,8 @@ class MainWindow(QMainWindow):
         else:
             txt = str(fm.Report(self.input_data, self.output_data))
             self.reportPlainEdit.setPlainText(txt)
-
+            
+        self.tabWidget.setCurrentIndex(0)
         self.setEnabled(True)
         self.pg.exit()
 

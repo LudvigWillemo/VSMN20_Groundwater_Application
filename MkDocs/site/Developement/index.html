@@ -1,0 +1,1023 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <meta name="author" content="Ludvig Willemo">
+      
+      
+      <link rel="icon" href="../img/icon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Developement - Groundwater Flow Application</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#development" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Groundwater Flow Application" class="md-header__button md-logo" aria-label="Groundwater Flow Application" data-md-component="logo">
+      
+  <img src="../img/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Groundwater Flow Application
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Developement
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../GroundwaterFlow/" class="md-tabs__link">
+      Groundwater Flow
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Developement
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../AppManual/" class="md-tabs__link">
+      Application Manual
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../ModuleManual/" class="md-tabs__link">
+      Flowmodel Module Manual
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../flowmodel/" class="md-tabs__link">
+        Code Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Groundwater Flow Application" class="md-nav__button md-logo" aria-label="Groundwater Flow Application" data-md-component="logo">
+      
+  <img src="../img/icon.png" alt="logo">
+
+    </a>
+    Groundwater Flow Application
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GroundwaterFlow/" class="md-nav__link">
+        Groundwater Flow
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Developement
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Developement
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flowmodel-module" class="md-nav__link">
+    Flowmodel Module
+  </a>
+  
+    <nav class="md-nav" aria-label="Flowmodel Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputdata" class="md-nav__link">
+    InputData
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outputdata" class="md-nav__link">
+    OutputData
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solver" class="md-nav__link">
+    Solver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report" class="md-nav__link">
+    Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    Visualization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gwapp-application" class="md-nav__link">
+    GWapp Application
+  </a>
+  
+    <nav class="md-nav" aria-label="GWapp Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mainwindow" class="md-nav__link">
+    MainWindow
+  </a>
+  
+    <nav class="md-nav" aria-label="MainWindow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design" class="md-nav__link">
+    Design
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functionality" class="md-nav__link">
+    Functionality
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-and-figures" class="md-nav__link">
+    Report and Figures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress" class="md-nav__link">
+    Progress
+  </a>
+  
+    <nav class="md-nav" aria-label="Progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#study-of-computation-time" class="md-nav__link">
+    Study of computation time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solverthread" class="md-nav__link">
+    SolverThread
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    Validation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AppManual/" class="md-nav__link">
+        Application Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ModuleManual/" class="md-nav__link">
+        Flowmodel Module Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Code Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flowmodel/" class="md-nav__link">
+        Flowmodel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GWapp/" class="md-nav__link">
+        GWapp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../segmenttimer/" class="md-nav__link">
+        Segementtimer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structure" class="md-nav__link">
+    Structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flowmodel-module" class="md-nav__link">
+    Flowmodel Module
+  </a>
+  
+    <nav class="md-nav" aria-label="Flowmodel Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inputdata" class="md-nav__link">
+    InputData
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#outputdata" class="md-nav__link">
+    OutputData
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solver" class="md-nav__link">
+    Solver
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report" class="md-nav__link">
+    Report
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualization" class="md-nav__link">
+    Visualization
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gwapp-application" class="md-nav__link">
+    GWapp Application
+  </a>
+  
+    <nav class="md-nav" aria-label="GWapp Application">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mainwindow" class="md-nav__link">
+    MainWindow
+  </a>
+  
+    <nav class="md-nav" aria-label="MainWindow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#design" class="md-nav__link">
+    Design
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functionality" class="md-nav__link">
+    Functionality
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#report-and-figures" class="md-nav__link">
+    Report and Figures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progress" class="md-nav__link">
+    Progress
+  </a>
+  
+    <nav class="md-nav" aria-label="Progress">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#study-of-computation-time" class="md-nav__link">
+    Study of computation time
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solverthread" class="md-nav__link">
+    SolverThread
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation" class="md-nav__link">
+    Validation
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="development">Development</h1>
+<p>This page is dedicated to discuss and present how the program was built. It discusses the problems that was faced in development and also the expansions made outside the required functionality. All code is found under the Code Reference tab, all examples are found under the manual tabs.</p>
+<h2 id="structure">Structure</h2>
+<p>The development of this project was made through several iterative assignments, each building on the previous iteration. From the beginning the flowmodel module has been separated from the runnable scripts or applications. This is done in order to make it usable in general applications and not only the one application. At times this has complicated implementation of additional features, but it is worth the effort to keep the flowmodel module independent.</p>
+<p>The module has been used several times with different scripts and applications, but in this final assignment it was used by a purpose built application by the name GWapp. This application is used by the end user, to interact with the module functionality and to visualize its results. Further, a single class module was used as a stopwatch for debugging purposes. All results can be saved and loaded with JSON files. How all these components relate to each other, was for the final version visualized with the flowchart below.</p>
+<figure>
+<p><img alt="flowchart" src="../img/flowchart.png" width="1000" />
+  </p>
+<figcaption>Flowchart of project structure</figcaption>
+</figure>
+<h2 id="flowmodel-module">Flowmodel Module</h2>
+<p>As stated before, the flowmodel was designed to be an independent module. It was to contain classes and functions to perform finite element analysis on a groundwater flow of a simplified dam. While containing core features required by the assignments, it has been expanded slightly to get additional optional functionality that are utilized by the application.</p>
+<h3 id="inputdata">InputData</h3>
+<p>The <code>InputData</code> has gotten an additional attribute <code>el_size_factor</code> so that the maximal element size can be modified. This allows for the user to choose the accuracy and computation time, which is especially important when performing a parameter study. Additionally instead of using two attributes to know if which parameter to study, this program only uses one <code>dStudy</code> to check if d should be studied or not.</p>
+<p>Exception handling was implemented for the file functionality methods to avoid common crashes. This was then connected to a return boolean which can be utilized to avoid running the statements that follow the function-call or to present error messages within the application.</p>
+<p>The simplified dam structure geometry is constructed by the <code>geometry</code> method. This geometry only makes physical sense for a certain set of values where all parameters are larger than zero, <code>w</code> &gt; <code>t</code> and <code>h</code> &gt; <code>d</code>. Hence, the method <code>validModel</code> was implemented to check these requirements. Since some physical limitations are also valid for the parameter study, an equivalent method <code>validParam</code> was implemented to check if <code>h</code> &gt; <code>d_end</code> &gt; <code>d</code> for a study of depth and <code>w</code> &gt; <code>t_end</code> &gt; <code>t</code> for a study of thickness.</p>
+<details class="warning" open="open"><summary>Warning for memory limit</summary><p>While the two methods <code>validModel</code> and <code>validParam</code> checks for logical errors within the input data, they are not foolproof. Depending on the machine there is a limitation on memory usage which can be violated when one chooses very large widths <code>w</code> and heights <code>d</code>. A general guideline is to not overstep a width of 100 m and height of 50 m when using mesh element size of 0.5.</p>
+</details>
+<h3 id="outputdata">OutputData</h3>
+<p>The <code>OutputData</code> class has a single functionality of storing different calculated values. While the application does not use all attributes, they are kept as another program might. Two additional attributes has been added to allow plotting of maximum effective flux for a parameter study, these are <code>range</code> and <code>max_flux</code>.</p>
+<h3 id="solver">Solver</h3>
+<p>Two new attributes were added to the <code>Solver</code> class, both has default values if nothing is declared in the constructor. The first attribute <code>basepath</code> is a base path used for export of VTK files. The second attribute <code>pg</code> is a progressbar which can be passed from the application in order have a semi-accurate progressbar. To only call progressbar methods when an attribute is defined, truncated if-statement is used. These use Python feature that non-empty/zero objects return <code>True</code> in combinations with logic operators.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># These are equivalent</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">argument</span> <span class="ow">and</span> <span class="n">function</span><span class="p">()</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">if</span> <span class="n">argument</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="n">function</span><span class="p">()</span>
+</code></pre></div>
+<p>The <code>execute</code> method uses a typical finite element method scheme which is defined by the flowchart beneath. Most steps are performed with predefined methods contained within CALFEM for Python. This method is then used within the parameter study loop in the <code>executeParamStudy</code> method.</p>
+<figure>
+<p><img alt="fem" src="../img/fem.png" width="750" />
+  </p>
+<figcaption>Flowchart of finite element solver</figcaption>
+</figure>
+<h3 id="report">Report</h3>
+<p>With the <code>Report</code> class the purpose is to present input and output data in a clear way from the attributes of <code>InputData</code> and <code>OutputData</code>. While the input data consists of mainly scalars, the output data contains large float type vectors and matrices which requires significant formatting. The results are displayed in tables for each node and for each element. As these tables can become massive, the scalar values are displayed first to be more easily available. The scalar output values are number of nodes, number of elements and the maximal effective flux.</p>
+<h3 id="visualization">Visualization</h3>
+<p>To visualize output data, the class <code>Visualization</code> is used. This class creates figures and stores them as attributes. Originally all plots were plotted within separate windows, which is still the case for <code>showAll</code> which presents all figures. However, I wished to show figures within the application, a more difficult task than first thought. </p>
+<p>Since figures could not be simply returned, due to how matplotlib and CALFEM Visualisation handles figures. With research a promising backend PyQt class <code>FigureCanvasQTAgg</code> of matplotlib was found. Its objects are PyQt5 compatible and can render figures from matplotlib and by extension CALFEM Visualisation. Another highly useful method is <code>figure_widget</code> from CALFEM Visualisation, which takes a figure argument and returns a <code>FigureCanvasQTAgg</code> object.</p>
+<p>The <code>FigureCanvasQTAgg</code> objects are also saved as attributes, hence also closed in <code>closeAll</code>. To keep the individual plotting functions independent of this new extension, the keyword argument <code>show</code> was added. When it has its default value of true, the figures are shown in their own windows, when it is assigned false it suppresses the figures from showing and returns a <code>FigureCanvasQTAgg</code> object.</p>
+<h2 id="gwapp-application">GWapp Application</h2>
+<p>The application is meant to connect the user with the flowmodel module, with an easy to use graphical interface. In this case we used the Qt framework to implement a graphical interface that could be used on any platform. </p>
+<h3 id="mainwindow">MainWindow</h3>
+<p>The <code>MainWindow</code> class contains the bulk of the application with the UI, functions and all connections between them. Most functions are have little to no content and only calls on methods from the flowmodel module. The UI is designed from the ground up and should contain everything a user might need, the user should not have to use the console apart from debugging.</p>
+<h4 id="design">Design</h4>
+<p>To ease the design process, the Qt Designer program is used which has real time previews and drag and drop features. However, not all features are available within the program and some tinkering had to be done with code using PyQt5.</p>
+<p>The first iterations of the interface were disorganized and used layouts in a way that would bad for scaling. Through iterative development a system of nested layouts was used to achieve predictable behavior during scaling. Through experimentation with stylesheets, I put my novice CSS knowledge to use in changing colors, margins and borders.</p>
+<p>With several different iterations of the interface and a better familiarity with Qt Designer, a new interface was designed. This time a more coherent <a href="https://coolors.co/palette/e63946-f1faee-a8dadc-457b9d-1d3557">color palette</a> was used, seen below, alongside color-matched free to use icons from <a href="https://www.flaticon.com/uicons">flaticon</a>.</p>
+<figure>
+<p><img alt="palette" src="../img/palett.png" width="750" />
+  </p>
+<figcaption>Primary color palette</figcaption>
+</figure>
+<p>Although my artistic merits are close to none, the result were much better. Nevertheless, both the menubar and the frame could not be modified to match the new design within Qt Designer. A custom topbar was designed with window buttons (minimize, maximize/restore and exit) and menu buttons (File and Utility), and the frame was removed with PyQt5 within the constructor.</p>
+<p>Since Qt Designer is missing the ability to ad QMenus, these had to be constructed with PyQt5. This was done by defining a shared stylesheet, creating a QMenu with all wanted actions and then attaching the menu to the menu buttons. Each action were paired with both an icon and a keyboard shortcut.</p>
+<p>Removing the frame there were no longer any grabbable surface to move or resize the window with. The solution for this was more complicated than expected and was inspired by a <a href="https://stackoverflow.com/a/58902192">stack overflow answer</a> by user musicamante. After modification, all non-intractable (not Button, PlainTextEdit, Slider) became grabbable to move the window. The inner workings are illustrated with the flowchart below.</p>
+<pre class="mermaid"><code>flowchart LR
+    A([MB clicked]) --&gt; B{LMB?}
+    B -- Yes --&gt; C[Set offset]
+    C -. float .-&gt; X[(Offset)]
+    D([Mouse moved]) --&gt; E{LMB held?&lt;br&gt;Windowed?&lt;br&gt;Offset!=None?}
+    X o--o E
+    E -- All yes --&gt; F[Move relative offset]
+    G([MB Released]) -. None .-&gt; X</code></pre>
+<p>Still no borders were available to grip in order to resize the window. To remedy this, a QFrame was added to the bottom right corner to which QSizeGrip were attached which allowed for resizing when grabbed. For extra clarification, an icon were added and when hovered over, the cursor is changed and a tooltip appears.</p>
+<p>While at it, the program icon was changed from the default Python executable to a custom made logo to represent the geometry. In order for the logo to be shown in windows, the application had to be assigned an unique application ID.</p>
+<details class="warning" open="open"><summary>Waring for Mac and Linux</summary><p>This program has been developed on machines using Windows, hence I have no idea if the program will run as intended on Linux or Mac. Since assigning an unique application ID is specific to Windows, the following line can be removed from <code>MainWindow.__init__</code> if the application is run in other platforms.
+<div class="annotate highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">ctypes</span><span class="o">.</span><span class="n">windll</span><span class="o">.</span><span class="n">shell32</span><span class="o">.</span><span class="n">SetCurrentProcessExplicitAppUserModelID</span><span class="p">(</span><span class="s2">&quot;GWapp&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+</details>
+<h4 id="functionality">Functionality</h4>
+<p>Within the constructor all intractable elements of the UI has to be connected to methods within the class. A lot of methods are created to handle all possible actions of the UI, although some short actions could be written with lambda functions. The methods are divided into a couple of categories:</p>
+<p>UI methods is consist of the <code>maximize</code> method which works restores or maximizes the UI while changing some elements. It is accompanied by <code>exit</code> which prompts the user before the program is terminated and all progress is lost. </p>
+<p>Utility methods correlates to the methods used when performing a simulation or parameter study. The methods <code>onActionExecute</code> and <code>onExecuteParamStudy</code> both utilizes the validation methods of <code>InputData</code> before calculations. If the model is invalid, the user is prompted with the requirements and no calculations are made.</p>
+<p>Input and output contains several updating and file-functionality methods. To begin with, the <code>updateControls</code> method puts <code>InputData</code> attributes into the controls while <code>updateModel</code> reads data from the controls and puts them into <code>InputData</code> attributes. For the latter, simple exception handling was used to catch when incorrect types are read. With <code>updateEnd</code> only the currently displayed end value is read and put into the corresponding <code>InputData</code> attribute. Lastly <code>updateName</code> extracts the model name from the path attribute and updates the name within the UI.</p>
+<h4 id="report-and-figures">Report and Figures</h4>
+<p>A QTabWidget is used to utilize the same space for the report and figures. The report is changed with calls of <code>setPlainText()</code> on the UI QPlainTextEdit attribute and its tab is always opened after new calculations. For figures, an empty <code>FigureCanvasQTAgg</code> attribute was initiated and manual placed into the opposite tab.</p>
+<p>In order to change the figure the method <code>updateCanvas</code> was implemented. This method uses the returned <code>FigureCanvasQTAgg</code> from the visualization methods to replace the previous canvas with <code>replaceWidget</code>. The method is accompanied by <code>clearCanvas</code>, which is connected to the clear canvas button.</p>
+<p>An addition to all plotting methods is the usage of <code>message</code> which prompts the user that relevant result has not been calculated for plotting attempts.</p>
+<h3 id="progress">Progress</h3>
+<p>When the program was finished there was still some things that were printed to the console, which provided the user with valuable information. One of these were all status printouts of the <code>Solver</code> class. To make these available to the application an object had to be passed to the solver instance. At first this was done with the QPlainTextEdit meant for the report. While it was sufficient, it was clunky and not visually pleasing.</p>
+<p>With the more familiarity with Qt from the design of the <code>MainWindow</code>, an initial design was made as an round window with percentage and current step on display. Originally the background was supposed to indicate the percentage by recoloring the background clockwise. This was done by changing the stylesheet, but proved unreliable with randomly occurring crashes. The design was then changed slightly and a fading display of previous steps were added.</p>
+<p>A new class <code>Progress</code> that handles the progressbar inherits from <code>QMainWindow</code> and has two methods, one to update segment name and percentage, a second to close and reset the window. An object of this type is passed to the a <code>Solver</code> object which can set progress of regular calculations and parameter studies.</p>
+<h4 id="study-of-computation-time">Study of computation time</h4>
+<p>The percentages of each step in the solver had to be set manually and it was quickly noted that the percentages varied as parameters were changed. In an effort to identify governing factors, an faulty assumption was made that a the relation could be derived by experimenting with parameters and graphing the results. </p>
+<p>For this purpose the <code>SegmentTimer</code> was implemented to act as a stopwatch. After gathering a data set and trying multiple methods to extract any relations, it was realized that it was an impossible task. The percentages was instead chosen to match the average of several runs with the default parameters.</p>
+<h3 id="solverthread">SolverThread</h3>
+<p>No modifications were made to the suggested <code>SolverThread</code> class used to create threads for the <code>execute</code> and <code>executeParamStudy</code> methods of the <code>Solver</code> class.</p>
+<h2 id="validation">Validation</h2>
+<p>In the earliest iteration of the program, the solver had to be validated by a similar calculation made with Matlab. Using a simple four element geometry with prescribed parameters, the results became identical apart from the amount of float points that was printed. These results are presented in the table beneath.</p>
+<table>
+<thead>
+<tr>
+<th><em>Input Data</em></th>
+<th align="center"><strong>Python</strong></th>
+<th align="center"><strong>Matlab</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thickness (t) [m]:</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td>Permeability matrix (perm) [m/day]:</td>
+<td align="center">[[50.  0.]<br> [ 0. 50.]]</td>
+<td align="center">50     0<br> 0    50</td>
+</tr>
+<tr>
+<td>Loads (loads) [node, m^2/day]:</td>
+<td align="center">[[6, -400.0]]</td>
+<td align="center">6  -400</td>
+</tr>
+<tr>
+<td>Boundary conditions (bcs) [node, m]:</td>
+<td align="center">[[2, 60.0],<br> [4, 60.0]]</td>
+<td align="center">2    60<br>4    60</td>
+</tr>
+<tr>
+<td>Nodal coordinates (coord) [m]:</td>
+<td align="center">[[   0.    0.]<br> [   0.  600.]<br> [ 600.    0.]<br> [ 600.  600.]<br> [1200.    0.]<br> [1200.  600.]]</td>
+<td align="center">0        0<br>   0      600<br> 600        0<br> 600      600<br>1200        0<br>1200      600</td>
+</tr>
+<tr>
+<td>Degrees of freedom (dof) [idx]:</td>
+<td align="center">[[1]<br> [2]<br> [3]<br> [4]<br> [5]<br> [6]]</td>
+<td align="center">1<br>2<br>3<br>4<br>5<br>6</td>
+</tr>
+<tr>
+<td>Topology (edof) [node, node, node]:</td>
+<td align="center">[[1 4 2]<br> [1 3 4]<br> [3 6 4]<br> [3 5 6]]</td>
+<td align="center">1     1     4     2<br>2     1     3     4<br>3     3     6     4<br>4     3     5     6</td>
+</tr>
+<tr>
+<td><strong><em>Output Data</em></strong></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>Nodal piezometric head (a) [m]:</td>
+<td align="center">[[59.05882353]<br> [60.        ]<br> [58.11764706]<br> [60.        ]<br> [53.41176471]<br> [48.70588235]]</td>
+<td align="center">59.0588<br>60.0000<br>58.1176<br>60.0000<br>53.4118<br>48.7059</td>
+</tr>
+<tr>
+<td>Nodal reaction flux (r) [m^2/day]:</td>
+<td align="center">[[ 0.00000000e+00]<br> [ 2.35294118e+01]<br> [ 0.00000000e+00]<br> [ 3.76470588e+02]<br> [-2.27373675e-13]<br> [ 2.27373675e-13]]</td>
+<td align="center">0.0000<br>23.5294<br>0.0000<br>376.4706<br>-0.0000<br>-0.0000</td>
+</tr>
+<tr>
+<td>Elemental piezometric head (ed) [m]:</td>
+<td align="center">[[59.05882353 60.         60.        ]<br> [59.05882353 58.11764706 60.        ]<br> [58.11764706 48.70588235 60.        ]<br> [58.11764706 53.41176471 48.70588235]]</td>
+<td align="center">59.0588   60.0000   60.0000<br>59.0588   58.1176   60.0000<br>58.1176   48.7059   60.0000<br>58.1176   53.4118   48.7059</td>
+</tr>
+<tr>
+<td>Elemental volume flux (qs) [m^2/day]:</td>
+<td align="center">[[ 0.         -0.07843137]<br> [ 0.07843137 -0.15686275]<br> [ 0.94117647 -0.15686275]<br> [ 0.39215686  0.39215686]]</td>
+<td align="center">0   -0.0784<br>0.0784   -0.1569<br>0.9412   -0.1569<br>0.3922    0.3922</td>
+</tr>
+<tr>
+<td>Elemental hydraulic gradient (qt) [m]:</td>
+<td align="center">[[ 0.          0.00156863]<br> [-0.00156863  0.00313725]<br> [-0.01882353  0.00313725]<br> [-0.00784314 -0.00784314]]</td>
+<td align="center">0    0.0016<br>-0.0016    0.0031<br>-0.0188    0.0031<br>-0.0078   -0.0078</td>
+</tr>
+</tbody>
+</table>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../GroundwaterFlow/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Groundwater Flow" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Groundwater Flow
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../AppManual/" class="md-footer__link md-footer__link--next" aria-label="Next: Application Manual" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Application Manual
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Ludvig Willemo
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

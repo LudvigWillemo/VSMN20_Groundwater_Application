@@ -1,0 +1,850 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Project documentation with Markdown.">
+      
+      
+        <meta name="author" content="Ludvig Willemo">
+      
+      
+      <link rel="icon" href="../img/icon.png">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.15">
+    
+    
+      
+        <title>Groundwater Flow - Groundwater Flow Application</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.c382b1dc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cc9b2e1e.min.css">
+        
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#groundwater-flow" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Groundwater Flow Application" class="md-header__button md-logo" aria-label="Groundwater Flow Application" data-md-component="logo">
+      
+  <img src="../img/icon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Groundwater Flow Application
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Groundwater Flow
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Groundwater Flow
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Developement/" class="md-tabs__link">
+      Developement
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../AppManual/" class="md-tabs__link">
+      Application Manual
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../ModuleManual/" class="md-tabs__link">
+      Flowmodel Module Manual
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../flowmodel/" class="md-tabs__link">
+        Code Reference
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Groundwater Flow Application" class="md-nav__button md-logo" aria-label="Groundwater Flow Application" data-md-component="logo">
+      
+  <img src="../img/icon.png" alt="logo">
+
+    </a>
+    Groundwater Flow Application
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Groundwater Flow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Groundwater Flow
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-model" class="md-nav__link">
+    Mathematical model
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#darcys-law" class="md-nav__link">
+    Darcy's law
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differential-equation" class="md-nav__link">
+    Differential equation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundary-condition" class="md-nav__link">
+    Boundary condition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-element-model" class="md-nav__link">
+    Finite element model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    Applications
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drinking-water" class="md-nav__link">
+    Drinking water
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dams" class="md-nav__link">
+    Dams
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-material" class="md-nav__link">
+    Additional material
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Developement/" class="md-nav__link">
+        Developement
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AppManual/" class="md-nav__link">
+        Application Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ModuleManual/" class="md-nav__link">
+        Flowmodel Module Manual
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Code Reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Code Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Code Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flowmodel/" class="md-nav__link">
+        Flowmodel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GWapp/" class="md-nav__link">
+        GWapp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../segmenttimer/" class="md-nav__link">
+        Segementtimer
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mathematical-model" class="md-nav__link">
+    Mathematical model
+  </a>
+  
+    <nav class="md-nav" aria-label="Mathematical model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#darcys-law" class="md-nav__link">
+    Darcy's law
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#differential-equation" class="md-nav__link">
+    Differential equation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boundary-condition" class="md-nav__link">
+    Boundary condition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#finite-element-model" class="md-nav__link">
+    Finite element model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    Applications
+  </a>
+  
+    <nav class="md-nav" aria-label="Applications">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#drinking-water" class="md-nav__link">
+    Drinking water
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dams" class="md-nav__link">
+    Dams
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-material" class="md-nav__link">
+    Additional material
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="groundwater-flow">Groundwater Flow</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Besides glaciers and icecaps, most of the worlds freshwater is stored in the ground. This water is not only stored, but flows throughout the ground between the solid particles that composes it. Understanding how this water moves is vital since it is a valuable resource providing drinking and irrigation water the world over [1]. It is also a major factor in the construction of dams, which provide hydroelectric power the world over [2].</p>
+<figure>
+<p><img alt="gw" src="../img/gw.png" width="750" /></p>
+</figure>
+<p align="center">
+  Illustration of groundwater flow. T.C. Winter, J.W. Harvey, O.L. Franke, and W.M. Alley (1998), <em>Groundwater flow</em>, https://commons.wikimedia.org/wiki/File:Groundwater_flow.svg [26/05/22].
+</p>
+
+<h2 id="mathematical-model">Mathematical model</h2>
+<p>Groundwater flow is a kind of seepage, movement of water in porous solids, studied within the field of soil mechanics and geology. A popular way to model complex seepage is with finite element methods, both for transient and steady state problems. In this project, we focus on latter for which the following is true [4, p.315]:</p>
+<ul>
+<li>Constant water pressure</li>
+<li>Constant water rate of flow</li>
+<li>Constant effective stress in soil</li>
+<li>No soil deformation</li>
+</ul>
+<p>In order for an assumption of steady state to be valid, a number of assumptions has to be made. These are listed and explained beneath [4, p.316][5]:</p>
+<ul>
+<li>Saturated soil: Space between soil particles filled with fluid</li>
+<li>Homogenous soil: Characteristics independent of location</li>
+<li>Incompressible soil: Neither soil or water can be deformed or compressed</li>
+<li>Darcy's law is valid: Constitutive law of fluid flow through porous media</li>
+<li>Negligible capillary effects: Capillary action between soil particles and fluid causes diffusion</li>
+</ul>
+<h3 id="darcys-law">Darcy's law</h3>
+<p>One-dimensional flow through a permeable medium, is governed by Darcy's law, which states that the flow rate <span class="arithmatex">\(q\)</span> is proportional to the derivative of the piezometric head <span class="arithmatex">\(\phi\)</span> by the coefficient of permeability <span class="arithmatex">\(k\)</span> [3, p.89].</p>
+<div class="arithmatex">\[
+  q = -k \frac{d\phi}{dx}
+\]</div>
+<p>This equation is identical, apart from the quantities, to Fourier's law for heat flow. In fact the quantities of the constitutive law can be changed to fit a wide array of different physical problems, that have an analogous relation. By understanding one of the physical problems, one can understand principles of several others. As per the heat equation, the constitutive relation can be generalized to multiple dimensions [3, p.89].</p>
+<div class="arithmatex">\[
+  \textbf{q} = -\textbf{D}\nabla\phi
+\]</div>
+<h3 id="differential-equation">Differential equation</h3>
+<p>Considering a arbitrary region with a fluid supply <span class="arithmatex">\(Q\)</span>, assuming that the volume is conserved and an incompressible fluid, the governing differential equation can be formulated [3, p.88].</p>
+<div class="arithmatex">\[
+  \text{div}(\textbf{D}\nabla\phi) + Q = 0
+\]</div>
+<h3 id="boundary-condition">Boundary condition</h3>
+<p>To complete the model formulation one needs boundary conditions. These can be of two different types, essential boundaries with known piezometric head, and natural with prescribed flow normal to the boundary. For a impermeable surface, the essential boundary condition is zero.</p>
+<h2 id="finite-element-model">Finite element model</h2>
+<p>To formulate a finite element model of groundwater flow in two dimensions, the strong form is required. Hence, the differential equation is reduced to two dimensions and boundary conditions as <span class="arithmatex">\(\mathcal{L}_h\)</span> and <span class="arithmatex">\(\mathcal{L}_g\)</span> are arbitrary boundaries with natural and essential conditions respectively [3, p.83]. </p>
+<div class="arithmatex">\[
+  \begin{matrix}
+    \text{div}(t\textbf{D}\nabla \phi) + tQ = 0 \hspace{10mm}  \text{in region } A \\
+    q_n = \textbf{q}^\text{T}\textbf{n} = h \hspace{15mm} \text{on }\mathcal{L}_h\\
+    \phi = g \hspace{33mm} \text{ on }\mathcal{L}_g
+    \end{matrix}
+\]</div>
+<p>From the strong form a finite element model can be derived using the Galerkin method, which is presented beneath. For a complete derivation, the reader is referred to the FE formulation of two-dimensional heat flow in chapters 6,7 and 10 in <em>Introduction to the finite element method</em> [3].</p>
+<div class="arithmatex">\[
+  \begin{matrix}
+    \left(\int_A \textbf{B}^\text{T}\textbf{DB}t\text{d}A\right) \textbf{a} = \left(-\int_{\mathcal{L}_{h}}\textbf{N}^\text{T}ht\text{d}\mathcal{L} - \int_{\mathcal{L}_{g}}\textbf{N}^\text{T}q_{n}t\text{d}\mathcal{L}\right) + \int_A\textbf{N}^\text{T}Qt\text{d}A\\
+    \hspace{18mm} \textbf{K} \hspace{15mm} \textbf{a} = \hspace{35mm} \textbf{f}_\text{b} \hspace{36mm} + \hspace{13mm} \textbf{f}_\text{l} \hfill
+  \end{matrix}
+\]</div>
+<p>To solve the equation system for the nodal piezometric head <span class="arithmatex">\(\textbf{a}\)</span>, one needs to assemble the global stiffness matrix <span class="arithmatex">\(\textbf{K}\)</span>, the boundary vector <span class="arithmatex">\(\textbf{f}_\text{b}\)</span> and the load vector <span class="arithmatex">\(\textbf{f}_\text{l}\)</span>.</p>
+<h2 id="applications">Applications</h2>
+<p>Understanding of groundwater flow and usage of corresponding finite element models proves useful in many cases. To give an introduction of the possible applications, two different examples are used.</p>
+<h3 id="drinking-water">Drinking water</h3>
+<p>Groundwater accounts for roughly 30 percent of the worlds freshwater and is only beat by glaciers and icecaps. But unlike glaciers the water of liquid form and constitutes upwards of 99 percent of the worlds liquid freshwater. It is vital for billions of lives the world over, since it is the source of roughly half the worlds drinking water, 40 percent of irrigation water and 30 percent of water within industrial use [1].</p>
+<p>Wells are used to exploit groundwater beneath the water table under which the soil is saturated. Removing water is equivalent to a negative source term and will effect the groundwater flow in the surrounding region which will try to replenish water. If a well pumps to much water it might drain the soil which becomes unsaturated lowering the water table in a region, which might dry out other wells in its vicinity. Groundwater is a shared source and its exploitation can affect its availability [5].</p>
+<p>It is not only water that flows through porous medium, but also liquid contaminants. The source might be incorrect waste management as landfills, dug latrines, leaking ground pipes of waste or oil. Either way, the contaminants can travel far through the ground and be extracted in wells far way. While drinking water is often treated, in emerging regions of the world this might not be the case. An large source of sickness and death is human waste management, improperly built pit latrines with little to no walls to contain waste can introduce contaminants to the groundwater and later be extracted for drinking in wells [1].</p>
+<h3 id="dams">Dams</h3>
+<p>Hydroelectric powerplants is the source to about 17 percent of the worlds energy production is the largest renewable source. As the world is pushing for transition from fossil fuels to renewable sources leading the way for the construction of dams and megaprojects as the Chinese Three Gorges Dam. The same potential energy that is exploited to produce electrical power when passed through turbines, is the driving force behind groundwater flow around our through the necessary dams [2]. </p>
+<p>If the flow becomes too large it can cause internal erosion known as piping, the leading cause of dam failure. With high flow the soil particles are separated further from each other reducing the shear forces between them. As shear forces is a main difference between solids and fluids, the soil becomes a semi-liquid and is follows the flow. The removing of the soil causes tunnels (pipes) to form, with less flow resistance which promotes more flow. The positive feedback loop causes a cascade, which can severely harm the structural integrity of the entire dam [6].</p>
+<figure>
+<p><img alt="teton" src="../img/teton.jpg" width="750" /></p>
+</figure>
+<p align="center">
+  Catastrophic failure due to piping at Teton Dam: 1976, Idaho. WaterArchives.org (2015), <em>IDAHO-L-0010</em>, https://www.flickr.com/photos/23487245@N08/5811736921 [26/05/22].
+</p>
+
+<p>However, to model this behavior goes against some of the assumptions made earlier. A more complex model is needed to model piping. A more simple case will be modeled in this application, with a steady state solution of a simplified dam.</p>
+<h2 id="additional-material">Additional material</h2>
+<p>For the one further interested in the phenomena, of groundwater flow I refer to the great illustrations and experiments on the YouTube channel Practical Engineering. They has several videos on the subject of <a href="https://www.youtube.com/watch?v=0EzoHXEzdwY">groundwater flow</a>, <a href="https://www.youtube.com/watch?v=bG19b06NG_w">wells</a> and <a href="https://www.youtube.com/watch?v=eImtYyuQCZ8">dam piping</a>.</p>
+<h2 id="references">References</h2>
+<p>[1] Lall, U., Josset, L and Russo, T. <em>A Snapshot of the World's Groundwater Challenges.</em> Annual Review of Environment and Resources, vol 45 2020. DOI: https://doi.org/10.1146/annurev-environ-102017-025800.</p>
+<p>[2] U.S. Geological Survey (USGS). <em>Hydroelectric Power Water Use</em>, 2018. URL:
+https://www.usgs.gov/special-topics/water-science-school/science/hydroelectric-power-water-use (visited on 05/25/2022).</p>
+<p>[3] Ottosen, N. and Petersson, H. <em>Introduction to the finite element method.</em> Pearson Education Limited, 1992. ISBN: 0-13-273877-2.</p>
+<p>[4] Kaliakin, V.N. <em>Soil Mechanics.</em>Butterworth-Heinemann, 2017. ISBN: 978-0-12-804491-9. DOI: https://doi.org/10.1016/B978-0-12-804491-9.01001-6.</p>
+<p>[5] U.S. Geological Survey (USGS). <em>Aquifers and Groundwater</em>, 2019. URL: https://www.usgs.gov/special-topics/water-science-school/science/aquifers-and-groundwater (visited on 05/24/2022).</p>
+<p>[6] Association of State Dam Safety Officials (ASDSO). <em>Internal Erosion of Earth Dams.</em> URL: https://damsafety.org/dam-owners/internal-erosion-of-earth-dams#Internal%20Erosion%20Basics (visited on 05/24/2022).</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Developement/" class="md-footer__link md-footer__link--next" aria-label="Next: Developement" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Developement
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 Ludvig Willemo
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.a6c66575.min.js"></script>
+      
+        <script src="../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

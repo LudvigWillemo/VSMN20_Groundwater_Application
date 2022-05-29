@@ -13,6 +13,8 @@ site_name: Groundwater Flow Application
 site_description: Project documentation with Markdown.
 site_author: Ludvig Willemo
 copyright: Copyright &copy; 2022 Ludvig Willemo
+repo_url: https://github.com/LudvigWillemo/VSMN20_Groundwater_Application
+repo_name: Git Repository
 
 extra_css:
   - stylesheets/extra.css
@@ -54,6 +56,7 @@ theme:
   logo: img/icon.png
   favicon: img/icon.png
   icon:
+    repo: fontawesome/brands/github
     admonition:
       note: octicons/tag-16
       abstract: octicons/checklist-16

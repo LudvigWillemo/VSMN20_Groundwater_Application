@@ -6,14 +6,7 @@ hide:
 # Groundwater Flow
 
 ## Introduction
-Besides glaciers and icecaps, most of the worlds freshwater is stored in the ground. This water is not only stored, but flows throughout the ground between the solid particles that composes it. Understanding how this water moves is vital since it is a valuable resource providing drinking and irrigation water the world over [1]. It is also a major factor in the construction of dams, which provide hydroelectric power the world over [2].
-
-<figure markdown>
-  ![gw](img/gw.png){ width="750" }
-</figure>
-<p align="center">
-  Illustration of groundwater flow. T.C. Winter, J.W. Harvey, O.L. Franke, and W.M. Alley (1998), <em>Groundwater flow</em>, https://commons.wikimedia.org/wiki/File:Groundwater_flow.svg [26/05/22].
-</p>
+Besides glaciers and icecaps, most of the worlds freshwater is found in the ground. This water is not only stored, but flows throughout the ground between the solid particles that composes it. Understanding how this water moves is vital since it is a valuable resource that provides drinking and irrigation water the world over [1]. It is also has a large influence on the construction of dams since groundwater flow is a common cause of dam failures [2].
 
 ## Mathematical model
 Groundwater flow is a kind of seepage, movement of water in porous solids, studied within the field of soil mechanics and geology. A popular way to model complex seepage is with finite element methods, both for transient and steady state problems. In this project, we focus on latter for which the following is true [4, p.315]:
@@ -23,7 +16,7 @@ Groundwater flow is a kind of seepage, movement of water in porous solids, studi
 - Constant effective stress in soil
 - No soil deformation
 
-In order for an assumption of steady state to be valid, a number of assumptions has to be made. These are listed and explained beneath [4, p.316][5]:
+In order for an assumption of steady state to be valid, a number of further assumptions has to be made. These are listed and explained beneath [4, p.316][5]:
 
 - Saturated soil: Space between soil particles filled with fluid
 - Homogenous soil: Characteristics independent of location
@@ -38,7 +31,7 @@ $$
   q = -k \frac{d\phi}{dx}
 $$
 
-This equation is identical, apart from the quantities, to Fourier's law for heat flow. In fact the quantities of the constitutive law can be changed to fit a wide array of different physical problems, that have an analogous relation. By understanding one of the physical problems, one can understand principles of several others. As per the heat equation, the constitutive relation can be generalized to multiple dimensions [3, p.89].
+This equation is identical, apart from the quantities, to Fourier's law for heat flow. In fact the quantities of the constitutive law can be changed to fit a wide array of different physical problems, that have an similar relation. By understanding one of the physical problems, one can understand principles of several others. As per the heat equation, the constitutive relation can be generalized to multiple dimensions [3, p.89].
 
 $$
   \textbf{q} = -\textbf{D}\nabla\phi
@@ -56,7 +49,7 @@ To complete the model formulation one needs boundary conditions. These can be of
 
 
 ## Finite element model
-To formulate a finite element model of groundwater flow in two dimensions, the strong form is required. Hence, the differential equation is reduced to two dimensions and boundary conditions as $\mathcal{L}_h$ and $\mathcal{L}_g$ are arbitrary boundaries with natural and essential conditions respectively [3, p.83]. 
+To formulate a finite element model of groundwater flow in two dimensions, the strong form is required. Hence, the differential equation is reduced to two dimensions and boundary conditions as $\mathcal{L}_h$ and $\mathcal{L}_g$ are arbitrary boundaries with natural and essential boundary conditions respectively [3, p.83]. 
 
 $$
   \begin{matrix}
@@ -78,22 +71,29 @@ $$
 To solve the equation system for the nodal piezometric head $\textbf{a}$, one needs to assemble the global stiffness matrix $\textbf{K}$, the boundary vector $\textbf{f}_\text{b}$ and the load vector $\textbf{f}_\text{l}$.
 
 ## Applications
-Understanding of groundwater flow and usage of corresponding finite element models proves useful in many cases. To give an introduction of the possible applications, two different examples are used.
+Understanding of groundwater flow and usage of corresponding finite element models proves useful in many cases. To give an introduction of the possible applications, two different examples are presented.
 
 ### Drinking water
-Groundwater accounts for roughly 30 percent of the worlds freshwater and is only beat by glaciers and icecaps. But unlike glaciers the water of liquid form and constitutes upwards of 99 percent of the worlds liquid freshwater. It is vital for billions of lives the world over, since it is the source of roughly half the worlds drinking water, 40 percent of irrigation water and 30 percent of water within industrial use [1].
+Groundwater accounts for roughly 30 percent of the worlds freshwater and is only beat by glaciers and icecaps. But unlike glaciers the water is of liquid form and constitutes upwards of 99 percent of the worlds liquid freshwater supply. It is vital for billions of lives the world over, since it is the source of roughly half the worlds drinking water, 40 percent of irrigation water and 30 percent of water within industrial use [1].
 
-Wells are used to exploit groundwater beneath the water table under which the soil is saturated. Removing water is equivalent to a negative source term and will effect the groundwater flow in the surrounding region which will try to replenish water. If a well pumps to much water it might drain the soil which becomes unsaturated lowering the water table in a region, which might dry out other wells in its vicinity. Groundwater is a shared source and its exploitation can affect its availability [5].
+Wells are used to exploit groundwater beneath the water table under which the soil is saturated. Removing water is equivalent to a negative source term and will effect the groundwater flow in the surrounding region, which will try to replenish water from where it is removed. If a well pumps to much water it might drain the soil which becomes unsaturated, lowering the water table in a region, which might dry out other wells in its vicinity. Groundwater is a shared source and its exploitation can affect its availability for others [5].
 
-It is not only water that flows through porous medium, but also liquid contaminants. The source might be incorrect waste management as landfills, dug latrines, leaking ground pipes of waste or oil. Either way, the contaminants can travel far through the ground and be extracted in wells far way. While drinking water is often treated, in emerging regions of the world this might not be the case. An large source of sickness and death is human waste management, improperly built pit latrines with little to no walls to contain waste can introduce contaminants to the groundwater and later be extracted for drinking in wells [1].
-
-### Dams
-Hydroelectric powerplants is the source to about 17 percent of the worlds energy production is the largest renewable source. As the world is pushing for transition from fossil fuels to renewable sources leading the way for the construction of dams and megaprojects as the Chinese Three Gorges Dam. The same potential energy that is exploited to produce electrical power when passed through turbines, is the driving force behind groundwater flow around our through the necessary dams [2]. 
-
-If the flow becomes too large it can cause internal erosion known as piping, the leading cause of dam failure. With high flow the soil particles are separated further from each other reducing the shear forces between them. As shear forces is a main difference between solids and fluids, the soil becomes a semi-liquid and is follows the flow. The removing of the soil causes tunnels (pipes) to form, with less flow resistance which promotes more flow. The positive feedback loop causes a cascade, which can severely harm the structural integrity of the entire dam [6].
+It is not only water that flows through porous medium, but also liquid contaminants. The source might be incorrect waste management as landfills, dug latrines, leaking ground pipes of waste or oil. Either way, the contaminants can travel far through the ground and be extracted in wells far way. While drinking water is often treated, in emerging regions of the world this might not be the case. An large source of sickness and death is caused by human waste management, improperly built pit latrines with little to no walls to contain waste can introduce contaminants to the groundwater and later be extracted by wells for drinking [1].
 
 <figure markdown>
-  ![teton](img/teton.jpg){ width="750" }
+  ![gw](img/gw.png){ width="650" }
+</figure>
+<p align="center">
+  Illustration of groundwater flow. T.C. Winter, J.W. Harvey, O.L. Franke, and W.M. Alley (1998), <em>Groundwater flow</em>, https://commons.wikimedia.org/wiki/File:Groundwater_flow.svg [26/05/22].
+</p>
+
+### Dams
+Hydroelectric powerplants is the source to about 17 percent of the worlds energy production, the largest renewable source. As the world is transitioning from fossil fuels to renewable sources, there constantly new constructions of dams and megaprojects, with one example being the Chinese Three Gorges Dam. The same potential energy that is exploited to produce electricity when passed through turbines, is the driving force behind groundwater flow around our through the necessary dams [2]. 
+
+If the flow becomes too large it can cause internal erosion known as piping, the leading cause of dam failure. With high flow the soil particles are separated further from each other reducing the shear forces between them. As shear forces is the main difference between solids and fluids, the soil becomes a semi-liquid and follows the flow. The removing of the soil causes tunnels (pipes) to form, which has less flow resistance which promotes more flow. The positive feedback loop causes a cascade, which can severely harm the structural integrity of the entire dam [6].
+
+<figure markdown>
+  ![teton](img/teton.jpg){ width="650" }
 </figure>
 <p align="center">
   Catastrophic failure due to piping at Teton Dam: 1976, Idaho. WaterArchives.org (2015), <em>IDAHO-L-0010</em>, https://www.flickr.com/photos/23487245@N08/5811736921 [26/05/22].
@@ -102,7 +102,7 @@ If the flow becomes too large it can cause internal erosion known as piping, the
 However, to model this behavior goes against some of the assumptions made earlier. A more complex model is needed to model piping. A more simple case will be modeled in this application, with a steady state solution of a simplified dam.
 
 ## Additional material
-For the one further interested in the phenomena, of groundwater flow I refer to the great illustrations and experiments on the YouTube channel Practical Engineering. They has several videos on the subject of [groundwater flow](https://www.youtube.com/watch?v=0EzoHXEzdwY), [wells](https://www.youtube.com/watch?v=bG19b06NG_w) and [dam piping](https://www.youtube.com/watch?v=eImtYyuQCZ8).
+For the one further interested in the intricacies of groundwater flow, I refer to the great illustrations and experiments by YouTube channel Practical Engineering who has several videos on the subject of [groundwater flow](https://www.youtube.com/watch?v=0EzoHXEzdwY), [wells](https://www.youtube.com/watch?v=bG19b06NG_w) and [dam piping](https://www.youtube.com/watch?v=eImtYyuQCZ8).
 
 ## References
 [1] Lall, U., Josset, L and Russo, T. <em>A Snapshot of the World's Groundwater Challenges.</em> Annual Review of Environment and Resources, vol 45 2020. DOI: https://doi.org/10.1146/annurev-environ-102017-025800.

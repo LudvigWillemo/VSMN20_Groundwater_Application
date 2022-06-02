@@ -1,8 +1,8 @@
 {
     "d": 2.0,
-    "dEnd": 15.0,
-    "dStudy": true,
-    "el_size_factor": 2.0,
+    "dEnd": 10.0,
+    "dStudy": false,
+    "el_size_factor": 1.0,
     "ep": [
         1.0
     ],
@@ -12,7 +12,7 @@
     "p": 20.0,
     "steps": 20,
     "t": 2.0,
-    "tEnd": 15.0,
+    "tEnd": 10.0,
     "version": 7,
     "w": 20.0
 }
